@@ -1,0 +1,392 @@
+:root {
+  --vt-font-family: "Lato", "AvenirNext-Regular", "Avenir Next", Avenir, Roboto, Helvetica, "Helvetica Neue", Cairo, sans-serif;
+  --vt-heading-color: #4a4a4a;
+  --vt-blue: #a3b2ff;
+  --vt-coral: #ff6b6b;
+  --vt-slate: #4a4a4a;
+  --vt-lightgray: #f5f7fb;
+  --vt-lilac: #f9f7fe;
+  --vt-lilac-pill: #e0e0f0;
+}
+
+/* Base Layout */
+body {
+  font-family: var(--vt-font-family);
+  background-color: var(--vt-lightgray);
+  margin: 0;
+  padding: 0;
+  color: var(--vt-slate);
+  text-align: center;
+}
+
+h1, h2 {
+  font-weight: 600;
+  color: var(--vt-heading-color);
+}
+
+/* App Container */
+#app {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* Media */
+video {
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: auto;
+}
+
+#tutor-name {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: #444;
+}
+
+/* Trait Pills – general */
+.trait-pill,
+#traits-container span,
+#top-traits span,
+.trait-pills-summary span {
+  background-color: var(--vt-lilac-pill);
+  color: #333;
+  padding: 6px 12px;
+  margin: 4px;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.trait-pill:hover {
+  background-color: #dcdcf0;
+}
+
+.trait-pill.selected {
+  background-color: var(--vt-blue);
+  color: white;
+}
+
+#traits-container,
+#top-traits,
+.trait-pills-summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1rem 0;
+  gap: 6px;
+}
+
+/* Trait Label */
+#trait-label {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Summary */
+#summary-screen {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fffdfc;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-size: 1rem;
+}
+
+#summary-box {
+  background-color: var(--vt-lilac);
+  border-radius: 12px;
+  padding: 20px;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  text-align: center;
+  margin-top: 16px;
+}
+
+#summary-message {
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+/* Rationale Card */
+#rationale-card {
+  background-color: #fdf1ff;
+  border: 1px solid #e6d4ef;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  max-width: 500px;
+  margin: 1rem auto 0 auto;
+  font-size: 1rem;
+  color: #5a4e63;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#rationale-card.show {
+  opacity: 1;
+}
+
+#explanation {
+  font-style: italic;
+  margin-top: 1rem;
+  color: #666;
+}
+
+/* Buttons */
+.button-row {
+  margin-top: 1rem;
+  padding-bottom: 80px;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+button {
+  font-size: 1rem;
+  padding: 10px 18px;
+  border-radius: 12px;
+  margin: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  user-select: none;
+  transition: background-color 0.2s ease;
+}
+
+#like-button {
+  background-color: var(--vt-blue);
+  color: white;
+}
+
+#dislike-button {
+  background-color: var(--vt-coral);
+  color: white;
+}
+
+/* Swipe Overlay */
+.overlay-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  padding: 16px;
+  width: 64px;
+  height: 64px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: white;
+  border: 2px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.overlay-button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-50%) scale(1.05);
+}
+
+#like-button {
+  right: 12px;
+  color: #4a6cf7;
+  border-color: #4a6cf7;
+}
+
+#dislike-button {
+  left: 12px;
+  color: #e24b4b;
+  border-color: #e24b4b;
+}
+
+/* Swipe Card */
+#swipe-card {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  touch-action: pan-y;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(50, 40, 60, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 480px;
+  margin: 0 1rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content h2 {
+  margin-bottom: 0.8rem;
+  color: #4B5563;
+}
+
+.modal-content p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  color: #444;
+}
+
+.modal-content button {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  background-color: #8e75c6;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Bottom Nav */
+#bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0; right: 0;
+  height: 60px;
+  background: #fdfcfe;
+  border-top: 1px solid #e2dced;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+}
+
+.nav-icon {
+  padding: 8px;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+
+.nav-icon:hover {
+  background-color: #f0eaff;
+}
+
+.nav-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.8;
+  color: #5a4e63;
+}
+
+
+.highlight-trait {
+  font-weight: 600;
+  color: #6b4eff;
+  background-color: #ece9ff;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+
+/* Ensure hidden class behaves as expected */
+.hidden {
+  display: none !important;
+}
+
+/* Extra spacing between summary message and pills if needed */
+#summary-box + #trait-label {
+  margin-top: 1.5rem;
+}
+
+/* Improve visual rhythm between sections */
+#summary-screen h2 {
+  margin-bottom: 1rem;
+}
+
+.trait-pills-summary {
+  margin-top: 0.25rem;
+}
+
+/* Optional: visually separate final footer */
+.trust-footer {
+  font-size: 0.85rem;
+  color: #999;
+  margin-top: 1.75rem;
+  font-style: italic;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  margin: 0 auto;
+  border: 3px solid #d3caff;
+  border-top: 3px solid #6b4eff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#trust-loop-visual {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#trust-message {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.3rem;
+}
+
+#trust-progress {
+  width: 80%;
+  height: 6px;
+  background-color: #ece9f9;
+  border-radius: 8px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+#trust-bar {
+  height: 100%;
+  width: 0%;
+  background-color: var(--vt-blue);
+  border-radius: 8px;
+  transition: width 0.4s ease;
+}
+
+#tutor-counter {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.3rem;
+}
