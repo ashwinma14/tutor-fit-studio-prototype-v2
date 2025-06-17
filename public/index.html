@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutor Fit Studio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- 👋 Onboarding Modal -->
+    <div id="onboarding-modal" class="modal">
+      <div class="modal-content">
+        <h2>Welcome to Tutor Fit Studio 👋</h2>
+        <p>
+          We’ll show you a few tutor clips. Pick the ones that feel right to
+          you—calm, fun, clear—whatever works best for your child.
+        </p>
+        <p>The more you interact, the smarter your matches get.</p>
+        <button id="start-button">Let’s begin</button>
+      </div>
+    </div>
+
+    <!-- 🚀 App Content -->
+    <div id="app">
+      <div id="trust-loop-visual">
+        <p id="trust-message">🧠 Learning your preferences…</p>
+        <div id="trust-progress">
+          <div id="trust-bar"></div>
+        </div>
+        <p id="tutor-counter"></p>
+      </div>
+      <div id="video-container" style="position: relative">
+        <div id="swipe-card">
+          <!-- Media Container (Video or Fallback Image) -->
+          <div id="media-container">
+            <video
+              id="tutor-video"
+              controls
+              autoplay
+              muted
+              width="100%"
+              height="auto"
+              style="border-radius: 8px"
+            ></video>
+            <img
+              id="fallback-image"
+              src="A_placeholder_image_for_a_tutor_video_features_a_v.png"
+              alt="Tutor Placeholder"
+              style="
+                display: none;
+                width: 100%;
+                height: auto;
+                border-radius: 8px;
+                user-select: none;
+              "
+              draggable="false"
+            />
+          </div>
+
+          <!-- Tutor Info -->
+          <p id="tutor-name"></p>
+          <div id="traits-container"></div>
+          <div id="rationale-card" class="hidden">
+            <p id="explanation"></p>
+          </div>
+        </div>
+
+        <div class="overlay-buttons">
+          <button id="dislike-button" class="overlay-button">👎</button>
+          <button id="like-button" class="overlay-button">👍</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 🎯 Summary Screen -->
+    <div id="summary-screen" class="summary-container hidden">
+      <h2>🎉 You’re all set!</h2>
+
+      <!-- Main summary box -->
+      <div id="summary-box">
+        <div id="summary-spinner" class="spinner"></div>
+        <p id="summary-message"></p>
+      </div>
+
+      <!-- Label before trait pills -->
+      <p id="trait-label">🧠 What we noticed you liked:</p>
+
+      <!-- Trait pills (supporting visual) -->
+      <div class="trait-pills-summary" id="top-traits"></div>
+
+      <!-- Trust reassurance footer -->
+      <p class="trust-footer">
+        This helps us understand what builds trust and connection for your
+        family.
+      </p>
+    </div>
+
+    <!-- 📜 Script -->
+    <script src="script.js" type="module"></script>
+
+    <!-- 📱 Bottom Navigation -->
+    <footer id="bottom-nav">
+      <div class="nav-icon" data-lucide="home"></div>
+      <div class="nav-icon" data-lucide="heart"></div>
+      <div class="nav-icon" data-lucide="user"></div>
+    </footer>
+
+    <!-- 🧠 Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      window.onload = () => {
+        if (window.lucide) {
+          lucide.createIcons();
+        } else {
+          console.error("Lucide did not load.");
+        }
+      };
+    </script>
+  </body>
+</html>

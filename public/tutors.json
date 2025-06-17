@@ -1,0 +1,32 @@
+[
+  {
+    "id": "tutor1",
+    "name": "Ms. Aria",
+    "videoUrl": "./calm.mov",
+    "traits": ["calm", "supportive", "slow-paced"]
+  },
+  {
+    "id": "tutor2",
+    "name": "Mr. Leo",
+    "videoUrl": "./playful.mov",
+    "traits": ["playful", "engaging", "funny"]
+  },
+  {
+    "id": "tutor3",
+    "name": "Coach Jay",
+    "videoUrl": "",
+    "traits": ["energetic", "expressive", "motivational"]
+  },
+  {
+    "id": "tutor4",
+    "name": "Dr. Lin",
+    "videoUrl": "",
+    "traits": ["rigorous", "structured", "analytic"]
+  },
+  {
+    "id": "tutor5",
+    "name": "Tess",
+    "videoUrl": "",
+    "traits": ["relatable", "friendly", "authentic"]
+  }
+]
